@@ -1,5 +1,13 @@
 {
+  "scripts": {
+    "postinstall": "cd client && yarn install"
+  },
+
   "name": "mocme",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ]
 }
