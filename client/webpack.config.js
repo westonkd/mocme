@@ -12,6 +12,7 @@ const configPath = resolve('..', 'config');
 const { devBuild, manifest, webpackOutputPath, webpackPublicOutputDir } =
   webpackConfigLoader(configPath);
 
+var glob = require('glob');
 const config = {
 
   context: resolve(__dirname),
@@ -21,8 +22,8 @@ const config = {
       'es5-shim/es5-shim',
       'es5-shim/es5-sham',
       'babel-polyfill',
-      './app/bundles/HelloWorld/startup/registration',
-    ],
+      './app/bundles/HelloWorld/components/HelloWorld.jsx',
+    ].concat(glob.sync("./app/bundles/**/startup/*")),
   },
 
   output: {
