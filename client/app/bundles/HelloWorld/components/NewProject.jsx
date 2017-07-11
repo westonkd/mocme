@@ -1,16 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import ProjectExplorer from './ProjectExplorer';
 
 export default class NewProject extends React.Component {
   static propTypes = {
-    createProjectImage: PropTypes.string.isRequired
+    createProjectImage: PropTypes.string.isRequired,
+    projectName: PropTypes.string,
+    projectId: PropTypes.number
   };
 
   constructor(props, _railsContext) {
     super(props);
 
     this.state = {
-      name: this.props.name
+      name: this.props.projectName,
+      projectCreated: false,
+      projectId: this.props.projectId
     };
   }
 
@@ -25,8 +30,35 @@ export default class NewProject extends React.Component {
     });
   }
 
+  handleError(data) {
+    console.log('error')
+    console.log(data);
+  }
+
+  handleSuccess(data) {
+    this.setState({
+      projectCreated: true,
+      projectId: data.id
+    });
+  }
+
   createProject = (event) => {
-    console.log('here');
+    self = this;
+
+    const project = {
+      project: {
+        title: this.projectTitle.value,
+        description: this.projectDescription.value
+      }
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: '/api/projects/new',
+      data: project,
+      success: self.handleSuccess.bind(self),
+      error: self.handleError.bind(self)
+    })
   }
 
   render() {
@@ -64,7 +96,8 @@ export default class NewProject extends React.Component {
           </div>
         </div>
         <div className="mdl-cell--8-col">
-          test
+          <ProjectExplorer active={this.state.projectCreated}
+                           projectId={this.state.projectId}/>
         </div>
       </div>
     );
