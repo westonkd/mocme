@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+/*
+* Global Styles
+*/
+h1, h2, h3, h4, h5, .mdl-navigation__link {
+  /*font-family: 'Fresca', sans-serif !important;*/
+  color: white;
+  font-family: 'Bitter', serif;
+}
+
+.dark {
+  color: black !important;
+}
+
+.light {
+  background-color: white;
+}
+
+.full-height {
+  height: 100%;
+}
+
+main, .mdl-layout__header-row {
+  background-color: #21A2D6;
+}
+
+/* main header */
+.mdl-layout__header-row {
+  border-bottom: solid 1px white;
+}
+
+.mdl-layout__header .mdl-layout__drawer-button {
+  background-color: #21A2D6 !important;
+}

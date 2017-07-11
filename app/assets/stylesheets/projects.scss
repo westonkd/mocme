@@ -1,0 +1,41 @@
+#new-project-image {
+   img {
+     width: 100%;
+   }
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+}
+
+.white-bg {
+  background-color: white;
+}
+
+.project-banner {
+  .spacer {
+    opacity: 0
+  }
+
+  .banner-title {
+      color: white;
+      background-color: black;
+      opacity: 0.6;
+      h1 {
+        padding-top: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-size: 30px;
+      }
+  }
+}
+
+.project-container {
+  height: 100vh;
+  padding: 15px;
+
+  .mdl-textfield, .mdl-button {
+    width: 100% !important;
+  }
+}
