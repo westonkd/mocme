@@ -39,3 +39,14 @@
     width: 100% !important;
   }
 }
+
+#phase-editor {
+  min-height: 176px;
+  background-color: white;
+  width: 100%;
+  padding: 5px;
+
+  .imgPreview img {
+    max-width: 100%;
+  }
+}
