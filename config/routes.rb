@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
-    # Projects
+  # Projects
   resource :projects, only: [:new]
-  post 'api/projects/new', to: 'projects_api#create'	
+  post 'api/projects/new', to: 'projects_api#create'
+
+  # phases
+  post 'api/phases/new', to: 'phases_api#create'
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]

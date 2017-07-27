@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 20170703170916) do
   enable_extension "plpgsql"
 
   create_table "images", id: :serial, force: :cascade do |t|
-    t.integer "phases_id"
+    t.integer "phase_id"
     t.text "url"
     t.text "embed"
     t.integer "stars"
-    t.index ["phases_id"], name: "index_images_on_phases_id"
+    t.index ["phase_id"], name: "index_images_on_phase_id"
   end
 
   create_table "phases", id: :serial, force: :cascade do |t|

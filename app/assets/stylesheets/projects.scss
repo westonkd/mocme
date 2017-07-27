@@ -31,10 +31,24 @@
   }
 }
 
+.phase-icon {
+  margin: 5px;
+  cursor: pointer;
+  border: solid 5px white;
+  transition: border .25s;
+  &:hover {
+    border: solid 5px #2196F3 !important;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
 .project-container {
   height: 100vh;
   padding: 15px;
-
+  border-right: solid 1px black;
   .mdl-textfield, .mdl-button {
     width: 100% !important;
   }
@@ -45,6 +59,9 @@
   background-color: white;
   width: 100%;
   padding: 5px;
+  position: fixed;
+  bottom: 0;
+  border-top: solid 1px black;
 
   .imgPreview img {
     max-width: 100%;

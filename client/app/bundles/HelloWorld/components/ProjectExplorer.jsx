@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import PhaseEditor from './PhaseEditor'
+import Phase from './Phase';
 
 export default class ProjectExplorer extends React.Component {
   static propTypes = {
@@ -19,14 +20,12 @@ export default class ProjectExplorer extends React.Component {
   }
 
   getPhases() {
-    return [1,2,3];
+    return [{id: 0, images:[{url:''}]}];
   }
 
   phases() {
     const phases = this.state.phases.map((p) =>
-      <h3 key={p.toString()}>
-        hi
-      </h3>
+      <Phase phase={p} key={`phase-${p.id}`} />
     );
     return phases;
   }
@@ -34,6 +33,13 @@ export default class ProjectExplorer extends React.Component {
   selectPhase = (e) => {
 
   };
+
+  addPhase = (e) => {
+    console.log('Adding a phase yo');
+    this.setState({
+      phases: this.state.phases.concat([e])
+    });
+  }
 
   setBusy = (isBusy) => {
     console.log((isBusy ? "Uploading..." : "Done Uploading"));
@@ -43,13 +49,15 @@ export default class ProjectExplorer extends React.Component {
   render() {
     return (
       <div className="mdl-grid mdl-grid--no-spacing">
-        <div className="mdl-cell--12-col">
+        <div className="mdl-cell mdl-cell--12-col">
           <div id="phase-container">
-            { this.phases() }
+            <div className="mdl-grid mdl-grid--nesting">
+              { this.phases() }
+            </div>
           </div>
         </div>
         <div className="mdl-cell--12-col">
-          <PhaseEditor setBusy={this.setBusy} />
+          <PhaseEditor setBusy={this.setBusy} addPhase={this.addPhase} />
         </div>
       </div>
     );

@@ -4,7 +4,8 @@ import React from 'react';
 export default class ImageUpload extends React.Component {
   static propTypes = {
     phase: PropTypes.object,
-    setBusy: PropTypes.func.isRequired
+    setBusy: PropTypes.func.isRequired,
+    addPhase: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -18,7 +19,15 @@ export default class ImageUpload extends React.Component {
 
   imageSuccess = (e) => {
     this.props.setBusy(false);
-    console.log("Image Uploaded");
+    const self = this;
+    this.props.setBusy(true);
+    $.ajax({
+      type: 'POST',
+      url: '/api/phases/new',
+      data: {image: e.data, phase: {project_id: 1, title: 'untitled', description: self.phaseDescription.value}},
+      success: (e) => {this.props.setBusy(false); this.props.addPhase(e);},
+      error: self.imageFailure
+    });
   }
 
   imageFailure = (e) => {
@@ -84,6 +93,16 @@ export default class ImageUpload extends React.Component {
               type="file"
               onChange={(e)=>this.handleImageChange(e)}
               id="file-select-button"/>
+
+            <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <textarea className="mdl-textfield__input"
+                        type="text"
+                        rows="3"
+                        id="phase-description"
+                        ref={(input) => { this.phaseDescription = input; }}>
+              </textarea>
+              <label className="mdl-textfield__label" htmlFor="phase-description">Image Description</label>
+            </div>
 
             <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
               type="submit"

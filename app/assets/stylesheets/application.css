@@ -17,10 +17,15 @@
 /*
 * Global Styles
 */
+.mdl-grid .mdl-grid.mdl-grid--nesting {
+  padding: 0;
+  margin: 0 -8px;
+}
+
 h1, h2, h3, h4, h5, .mdl-navigation__link {
   /*font-family: 'Fresca', sans-serif !important;*/
-  color: white;
-  font-family: 'Bitter', serif;
+  color: #21A2D6 !important;
+  font-family: 'Bitter', serif !important;
 }
 
 .dark {
@@ -36,7 +41,7 @@ h1, h2, h3, h4, h5, .mdl-navigation__link {
 }
 
 main, .mdl-layout__header-row {
-  background-color: #21A2D6;
+  background-color: white;
 }
 
 /* main header */

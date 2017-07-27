@@ -15,7 +15,7 @@ class CreatePhase < ActiveRecord::Migration[5.0]
     end
 
     create_table :images do |t|
-      t.belongs_to :phases
+      t.belongs_to :phase
       t.text :url
       t.text :embed
       t.integer :stars
